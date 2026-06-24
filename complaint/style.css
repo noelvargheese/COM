@@ -1,127 +1,199 @@
+/* RESET */
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
 }
 
+/* BODY */
+
 body{
-    font-family:Segoe UI,sans-serif;
+    font-family:"Segoe UI",sans-serif;
     background:#f5f7fb;
+    color:#333;
 }
+
+/* HEADER */
 
 header{
     background:#003366;
-    color:white;
+    color:#fff;
     text-align:center;
     padding:20px;
+    box-shadow:0 2px 8px rgba(0,0,0,.15);
 }
 
-.container{
-    max-width:1200px;
-    margin:auto;
-    padding:20px;
+header h1{
+    font-size:28px;
 }
+
+/* MAIN CONTAINER */
+
+.container{
+    max-width:1300px;
+    margin:30px auto;
+    padding:0 20px;
+}
+
+/* SECTIONS */
 
 .form-section,
 .pending-section{
-    background:white;
+    background:#fff;
     padding:25px;
     border-radius:12px;
-    box-shadow:0 3px 10px rgba(0,0,0,.1);
-    margin-bottom:20px;
+    box-shadow:0 4px 15px rgba(0,0,0,.08);
+    margin-bottom:25px;
 }
 
 h2{
-    margin-bottom:20px;
     color:#003366;
+    margin-bottom:20px;
 }
 
-label{
-    display:block;
-    margin-top:12px;
-    margin-bottom:5px;
-}
+/* FORM */
 
-input,
-select,
-textarea{
-    width:100%;
-    padding:12px;
-    border:1px solid #ccc;
-    border-radius:6px;
-}
-
-button{
-    margin-top:20px;
-    background:#003366;
-    color:white;
-    border:none;
-    padding:12px 20px;
-    border-radius:6px;
-    cursor:pointer;
-}
-
-button:hover{
-    background:#00509e;
-}
 #complaintForm{
     display:flex;
-    align-items:flex-end;
     gap:15px;
     flex-wrap:wrap;
+    align-items:stretch;
 }
 
-#complaintForm label{
-    display:none;
-}
+/* INPUTS */
 
 #complaintForm select,
 #complaintForm input,
 #complaintForm textarea{
-    width:auto;
-    flex:1;
+    border:1px solid #d5dbe3;
+    border-radius:8px;
+    padding:12px;
+    font-size:14px;
+    outline:none;
+    transition:.2s;
 }
 
-#category,
-#system{
+#complaintForm select:focus,
+#complaintForm input:focus,
+#complaintForm textarea:focus{
+    border-color:#003366;
+    box-shadow:0 0 0 3px rgba(0,51,102,.12);
+}
+
+/* CATEGORY */
+
+#category{
+    flex:1;
     min-width:180px;
 }
 
+/* SYSTEM */
+
+#system{
+    flex:1;
+    min-width:180px;
+}
+
+/* LOCATION */
+
 #location{
+    flex:1.2;
     min-width:220px;
 }
 
+/* COMPLAINT */
+
 #complaint{
+    flex:2;
     min-width:350px;
-    height:48px;
-    resize:none;
+    min-height:90px;
+    resize:vertical;
 }
 
+/* BUTTON */
+
 #complaintForm button{
-    margin-top:0;
-    height:48px;
-    white-space:nowrap;
-}
-.card{
-    border-left:5px solid orange;
-    background:#fafafa;
-    padding:15px;
-    margin-bottom:15px;
+    background:#003366;
+    color:white;
+    border:none;
     border-radius:8px;
+    padding:12px 24px;
+    cursor:pointer;
+    font-size:14px;
+    font-weight:600;
+    transition:.2s;
+    min-width:120px;
+}
+
+#complaintForm button:hover{
+    background:#00509e;
+}
+
+/* SUCCESS MESSAGE */
+
+#successMessage{
+    margin-top:15px;
+    color:#198754;
+    font-weight:600;
+}
+
+/* COMPLAINT CARDS */
+
+.card{
+    background:#fafafa;
+    border-left:5px solid #f59e0b;
+    padding:15px;
+    border-radius:10px;
+    margin-bottom:15px;
+    transition:.2s;
+}
+
+.card:hover{
+    box-shadow:0 3px 10px rgba(0,0,0,.08);
 }
 
 .card h3{
     color:#003366;
     margin-bottom:8px;
+    font-size:17px;
 }
+
+.card p{
+    margin-bottom:8px;
+    line-height:1.5;
+}
+
+/* STATUS */
 
 .status{
-    margin-top:10px;
-    font-weight:bold;
+    display:inline-block;
+    margin-top:8px;
+    font-weight:600;
+    color:#d97706;
+    background:#fff7ed;
+    padding:6px 12px;
+    border-radius:20px;
 }
 
-#successMessage{
-    margin-top:15px;
-    color:green;
-    font-weight:bold;
+/* MOBILE */
+
+@media(max-width:768px){
+
+    #complaintForm{
+        flex-direction:column;
+    }
+
+    #category,
+    #system,
+    #location,
+    #complaint,
+    #complaintForm button{
+        width:100%;
+        min-width:100%;
+    }
+
+    #complaint{
+        min-height:120px;
+    }
 }
