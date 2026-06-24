@@ -1,162 +1,199 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Admin Dashboard</title>
+    <title>Complaint Administration Portal</title>
 
-<link rel="stylesheet" href="style.css">
-<script defer src="script.js"></script>
-
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
 </head>
+
 <body>
 
-<header>
-    <h1>Complaint Administration Portal</h1>
-</header>
+    <!-- HEADER -->
 
-<div class="container">
+    <header>
+        <h1>Complaint Administration Portal</h1>
+    </header>
 
-    <!-- DASHBOARD -->
+    <main class="container">
 
-    <section class="dashboard">
+        <!-- DASHBOARD -->
 
-        <div class="stat-card pending">
-            <h3 id="pendingCount">0</h3>
-            <p>Pending</p>
-        </div>
+        <section class="dashboard">
 
-        <div class="stat-card progress">
-            <h3 id="progressCount">0</h3>
-            <p>In Progress</p>
-        </div>
+            <div class="stat-card pending">
+                <h3 id="pendingCount">0</h3>
+                <p>Pending</p>
+            </div>
 
-        <div class="stat-card completed">
-            <h3 id="completedCount">0</h3>
-            <p>Completed</p>
-        </div>
+            <div class="stat-card progress">
+                <h3 id="progressCount">0</h3>
+                <p>Accepted</p>
+            </div>
 
-        <div class="stat-card total">
-            <h3 id="totalCount">0</h3>
-            <p>Total</p>
-        </div>
+            <div class="stat-card completed">
+                <h3 id="completedCount">0</h3>
+                <p>Completed</p>
+            </div>
 
-    </section>
+            <div class="stat-card total">
+                <h3 id="totalCount">0</h3>
+                <p>Total</p>
+            </div>
 
-    <!-- FILTERS -->
+        </section>
 
-    <section class="filters">
+        <!-- FILTERS -->
 
-        <input
-            type="text"
-            id="searchInput"
-            placeholder="Search ID, Category, Location..."
-        >
-
-        <select id="dateFilter">
-            <option value="all">All</option>
-            <option value="today">Today</option>
-            <option value="week">This Week</option>
-            <option value="month">This Month</option>
-        </select>
-
-    </section>
-
-    <!-- COMPLAINTS -->
-
-    <section class="complaints-section">
-
-        <h2>Complaint Workflow</h2>
-
-        <div class="complaint-board">
-
-    <div class="board-column">
-        <div class="column-header pending-header">
-            New Complaints
-        </div>
-
-        <div class="column-content">
-            <!-- cards here -->
-        </div>
-    </div>
-
-    <div class="board-column">
-        <div class="column-header progress-header">
-            Accepted
-        </div>
-
-        <div class="column-content">
-            <!-- cards here -->
-        </div>
-    </div>
-
-    <div class="board-column">
-        <div class="column-header completed-header">
-            Completed
-        </div>
-
-        <div class="column-content">
-            <!-- cards here -->
-        </div>
-    </div>
-
-</div>
-
-    </section>
-
-    <!-- CATEGORY MANAGER -->
-
-    <section class="manager">
-
-        <h2>Manage Categories</h2>
-
-        <div class="manager-row">
+        <section class="filters">
 
             <input
                 type="text"
-                id="newCategory"
-                placeholder="New Category"
+                id="searchInput"
+                placeholder="Search Complaint ID, Category, System, Location..."
             >
 
-            <button id="addCategoryBtn">
-                Add Category
-            </button>
-
-        </div>
-
-        <ul id="categoryList"></ul>
-
-    </section>
-
-    <!-- SYSTEM MANAGER -->
-
-    <section class="manager">
-
-        <h2>Manage Systems</h2>
-
-        <div class="manager-row">
-
-            <select id="systemCategory">
+            <select id="dateFilter">
+                <option value="all">All Dates</option>
+                <option value="today">Today</option>
+                <option value="week">This Week</option>
+                <option value="month">This Month</option>
             </select>
 
-            <input
-                type="text"
-                id="newSystem"
-                placeholder="System Name"
-            >
+        </section>
 
-            <button id="addSystemBtn">
-                Add System
-            </button>
+        <!-- COMPLAINT WORKFLOW -->
 
-        </div>
+        <section class="complaints-section">
 
-        <ul id="systemList"></ul>
+            <h2>Complaint Workflow</h2>
 
-    </section>
+            <div class="complaint-board">
 
-</div>
+                <!-- NEW COMPLAINTS -->
+
+                <div class="board-column">
+
+                    <div class="column-header pending-header">
+                        New Complaints
+                    </div>
+
+                    <div
+                        class="column-content"
+                        id="pendingContainer"
+                    >
+                    </div>
+
+                </div>
+
+                <!-- ACCEPTED -->
+
+                <div class="board-column">
+
+                    <div class="column-header progress-header">
+                        Accepted
+                    </div>
+
+                    <div
+                        class="column-content"
+                        id="progressContainer"
+                    >
+                    </div>
+
+                </div>
+
+                <!-- COMPLETED -->
+
+                <div class="board-column">
+
+                    <div class="column-header completed-header">
+                        Completed
+                    </div>
+
+                    <div
+                        class="column-content"
+                        id="completedContainer"
+                    >
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- CATEGORY MANAGEMENT -->
+
+        <section class="manager">
+
+            <h2>Manage Categories</h2>
+
+            <div class="manager-row">
+
+                <input
+                    type="text"
+                    id="newCategory"
+                    placeholder="Enter Category Name"
+                >
+
+                <button id="addCategoryBtn">
+                    Add Category
+                </button>
+
+            </div>
+
+            <ul id="categoryList"></ul>
+
+        </section>
+
+        <!-- SYSTEM MANAGEMENT -->
+
+        <section class="manager">
+
+            <h2>Manage Systems</h2>
+
+            <div class="manager-row">
+
+                <select id="systemCategory">
+                    <option value="">
+                        Select Category
+                    </option>
+                </select>
+
+                <input
+                    type="text"
+                    id="newSystem"
+                    placeholder="Enter System Name"
+                >
+
+                <button id="addSystemBtn">
+                    Add System
+                </button>
+
+            </div>
+
+            <ul id="systemList"></ul>
+
+        </section>
+
+        <!-- RECENT ACTIVITY (OPTIONAL) -->
+
+        <section class="manager">
+
+            <h2>Recent Activity</h2>
+
+            <ul id="activityList">
+                <li>No recent activity available.</li>
+            </ul>
+
+        </section>
+
+    </main>
 
 </body>
+
 </html>
