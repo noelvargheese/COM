@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Admin Dashboard</title>
+
+<link rel="stylesheet" href="style.css">
+<script defer src="script.js"></script>
+
+</head>
+<body>
+
+<header>
+    <h1>Complaint Administration Portal</h1>
+</header>
+
+<div class="container">
+
+    <!-- DASHBOARD -->
+
+    <section class="dashboard">
+
+        <div class="stat-card pending">
+            <h3 id="pendingCount">0</h3>
+            <p>Pending</p>
+        </div>
+
+        <div class="stat-card progress">
+            <h3 id="progressCount">0</h3>
+            <p>In Progress</p>
+        </div>
+
+        <div class="stat-card completed">
+            <h3 id="completedCount">0</h3>
+            <p>Completed</p>
+        </div>
+
+        <div class="stat-card total">
+            <h3 id="totalCount">0</h3>
+            <p>Total</p>
+        </div>
+
+    </section>
+
+    <!-- FILTERS -->
+
+    <section class="filters">
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search ID, Category, Location..."
+        >
+
+        <select id="dateFilter">
+            <option value="all">All</option>
+            <option value="today">Today</option>
+            <option value="week">This Week</option>
+            <option value="month">This Month</option>
+        </select>
+
+    </section>
+
+    <!-- COMPLAINTS -->
+
+    <section class="complaints-section">
+
+        <h2>Complaints</h2>
+
+        <div id="complaintsContainer">
+
+        </div>
+
+    </section>
+
+    <!-- CATEGORY MANAGER -->
+
+    <section class="manager">
+
+        <h2>Manage Categories</h2>
+
+        <div class="manager-row">
+
+            <input
+                type="text"
+                id="newCategory"
+                placeholder="New Category"
+            >
+
+            <button id="addCategoryBtn">
+                Add Category
+            </button>
+
+        </div>
+
+        <ul id="categoryList"></ul>
+
+    </section>
+
+    <!-- SYSTEM MANAGER -->
+
+    <section class="manager">
+
+        <h2>Manage Systems</h2>
+
+        <div class="manager-row">
+
+            <select id="systemCategory">
+            </select>
+
+            <input
+                type="text"
+                id="newSystem"
+                placeholder="System Name"
+            >
+
+            <button id="addSystemBtn">
+                Add System
+            </button>
+
+        </div>
+
+        <ul id="systemList"></ul>
+
+    </section>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Complaint Portal</title>
+
+<link rel="stylesheet" href="style.css">
+<script defer src="script.js"></script>
+</head>
+
+<body>
+
+<header>
+    <h1>Complaint Management Portal</h1>
+</header>
+
+<div class="container">
+
+    <section class="form-section">
+
+        <h2>Submit Complaint</h2>
+
+        <form id="complaintForm">
+
+            <label>Category</label>
+            <select id="category" required>
+                <option value="">Select Category</option>
+            </select>
+
+            <label>System</label>
+            <select id="system" required>
+                <option value="">Select System</option>
+            </select>
+
+            <label>Location</label>
+            <input
+                type="text"
+                id="location"
+                placeholder="Enter Location"
+                required
+            >
+
+            <label>Complaint</label>
+            <textarea
+                id="complaint"
+                rows="5"
+                placeholder="Describe the issue..."
+                required
+            ></textarea>
+
+            <button type="submit">
+                Submit Complaint
+            </button>
+
+        </form>
+
+        <div id="successMessage"></div>
+
+    </section>
+
+    <section class="pending-section">
+
+        <h2>Pending Complaints</h2>
+
+        <div id="pendingComplaints">
+
+        </div>
+
+    </section>
+
+</div>
+
+</body>
+</html>
