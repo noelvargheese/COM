@@ -1,84 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KLL Complaint Portal</title>
+
+<link rel="stylesheet" href="style.css">
+<script defer src="script.js"></script>
+</head>
+
 <body>
 
-<div class="top-header">
-    <div class="logo-area">
-        <h2>KONKAN LNG LIMITED</h2>
-        <p>IT DEPARTMENT</p>
-    </div>
+<header>
+    <h1>Complaint Management Portal</h1>
+</header>
 
-    <div class="date-area">
-        Complaint Management System
-    </div>
-</div>
+<div class="container">
 
-<nav class="navbar">
-    <a href="#">Home</a>
-    <a href="#">New Complaint</a>
-    <a href="#">Check Status</a>
-    <a href="#">Help</a>
-</nav>
+    <section class="form-section">
 
-<div class="hero-image">
-    <div class="overlay">
-        <h1>Welcome to Online IT Complaint Management System</h1>
-    </div>
-</div>
-
-<div class="content-wrapper">
-
-    <div class="form-box">
-
-        <h2>Enter Complaint Details</h2>
+        <h2>Submit Complaint</h2>
 
         <form id="complaintForm">
 
-            <div class="row">
-                <select id="category" required>
-                    <option value="">Complaint Category</option>
-                </select>
+            <label>Category</label>
+            <select id="category" required>
+                <option value="">Category</option>
+            </select>
 
-                <select id="system" required>
-                    <option value="">System</option>
-                </select>
-            </div>
+            <select id="system" required>
+                <option value="">System</option>
+            </select>
 
-            <div class="row">
-                <input
-                    type="text"
-                    id="location"
-                    placeholder="Location"
-                    required
-                >
-            </div>
+            <input
+                type="text"
+                id="location"
+                placeholder="Location"
+                required
+            >
 
-            <div class="row">
-                <textarea
-                    id="complaint"
-                    placeholder="Describe the Complaint"
-                    required
-                ></textarea>
-            </div>
+            <textarea
+                id="complaint"
+                placeholder="Complaint Description"
+                required
+            ></textarea>
 
-            <div class="center">
-                <button type="submit">
-                    Save Data
-                </button>
-            </div>
+            <button type="submit">Submit</button>
 
         </form>
 
         <div id="successMessage"></div>
 
-    </div>
+    </section>
 
-    <div class="status-box">
+    <section class="pending-section">
 
         <h2>Pending Complaints</h2>
 
-        <div id="pendingComplaints"></div>
+        <div id="pendingComplaints">
 
-    </div>
+        </div>
+
+    </section>
 
 </div>
 
 </body>
+</html>
