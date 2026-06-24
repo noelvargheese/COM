@@ -1,3 +1,4 @@
+```javascript
 const API =
 "https://script.google.com/macros/s/AKfycbzKIO6usAk4Kh-d2zLxJwB5HOgwXHIELTqJ7FMwpZPM-UhPGwkLWKVvS87LgQc33sJtwA/exec";
 
@@ -27,52 +28,52 @@ async function loadDashboard(){
     await res.json();
 
     document.getElementById("pendingCount").textContent =
-    data.pending;
+    data.pending || 0;
 
     document.getElementById("progressCount").textContent =
-    data.progress;
+    data.progress || 0;
 
     document.getElementById("completedCount").textContent =
-    data.completed;
+    data.completed || 0;
 
     document.getElementById("totalCount").textContent =
-    data.total;
+    data.total || 0;
 }
 
 async function loadComplaints(){
 
-    const res =
-    await fetch(
-        API + "?action=getComplaints"
-    );
+    try{
 
-    complaints =
-    await res.json();
+        const res =
+        await fetch(
+            API + "?action=getComplaints"
+        );
 
-    renderComplaints();
+        complaints =
+        await res.json();
+
+        console.log("Complaints:", complaints);
+
+        renderComplaints();
+
+    }
+    catch(error){
+
+        console.error(
+            "Error loading complaints:",
+            error
+        );
+
+    }
 }
 
 function renderComplaints(){
 
-    
-    const pendingContainer =
-document.getElementById("pendingContainer");
-
-const progressContainer =
-document.getElementById("progressContainer");
-
-const completedContainer =
-document.getElementById("completedContainer");
-
-console.log("Pending:", pendingContainer);
-console.log("Progress:", progressContainer);
-console.log("Completed:", completedContainer);
-    
     const search =
     document
-    .getElementById("searchInput")
-    .value
-    .toLowerCase();
+        .getElementById("searchInput")
+        .value
+        .toLowerCase();
 
     const pendingContainer =
     document.getElementById(
@@ -89,45 +90,74 @@ console.log("Completed:", completedContainer);
         "completedContainer"
     );
 
+    if(
+        !pendingContainer ||
+        !progressContainer ||
+        !completedContainer
+    ){
+        console.error(
+            "Complaint containers not found."
+        );
+        return;
+    }
+
     pendingContainer.innerHTML = "";
     progressContainer.innerHTML = "";
     completedContainer.innerHTML = "";
 
     complaints
-    .filter(c=>{
+    .filter(c => {
 
         return (
-            c.id.toLowerCase().includes(search) ||
-            c.category.toLowerCase().includes(search) ||
+            (c.id || "")
+            .toLowerCase()
+            .includes(search)
+
+            ||
+
+            (c.category || "")
+            .toLowerCase()
+            .includes(search)
+
+            ||
+
             (c.location || "")
+            .toLowerCase()
+            .includes(search)
+
+            ||
+
+            (c.system || "")
             .toLowerCase()
             .includes(search)
         );
 
     })
-    .forEach(c=>{
+    .forEach(c => {
 
         const card = `
         <div class="complaint-card">
 
-            <h3>${c.id}</h3>
+            <h3>${c.id || ""}</h3>
 
             <p>
                 <strong>Category:</strong>
-                ${c.category}
+                ${c.category || ""}
             </p>
 
             <p>
                 <strong>System:</strong>
-                ${c.system}
+                ${c.system || ""}
             </p>
 
             <p>
                 <strong>Location:</strong>
-                ${c.location}
+                ${c.location || ""}
             </p>
 
-            <p>${c.complaint}</p>
+            <p>
+                ${c.complaint || ""}
+            </p>
 
             <div class="actions">
 
@@ -154,25 +184,30 @@ console.log("Completed:", completedContainer);
         </div>
         `;
 
-        if(
-            c.status === "Pending"
-        ){
+        if(c.status === "Pending"){
+
             pendingContainer.innerHTML += card;
+
         }
         else if(
             c.status === "In Progress"
         ){
+
             progressContainer.innerHTML += card;
+
         }
         else if(
             c.status === "Completed"
         ){
+
             completedContainer.innerHTML += card;
+
         }
 
     });
 
 }
+
 async function updateStatus(
     id,
     status
@@ -294,7 +329,6 @@ function renderSystems(){
             )">
             Delete
             </button>
-
         </li>
         `;
     });
@@ -322,7 +356,7 @@ async ()=>{
 };
 
 async function deleteCategory(
-category
+    category
 ){
 
     await fetch(API,{
@@ -343,7 +377,7 @@ async ()=>{
     systemCategory.value;
 
     const system =
-    newSystem.value;
+    newSystem.value.trim();
 
     if(!system) return;
 
@@ -362,8 +396,8 @@ async ()=>{
 };
 
 async function deleteSystem(
-category,
-system
+    category,
+    system
 ){
 
     await fetch(API,{
@@ -378,7 +412,10 @@ system
     loadSystems();
 }
 
-searchInput.addEventListener(
-"input",
-renderComplaints
+document
+.getElementById("searchInput")
+.addEventListener(
+    "input",
+    renderComplaints
 );
+```
