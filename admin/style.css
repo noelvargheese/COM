@@ -169,14 +169,21 @@ li button{
     grid-template-columns:repeat(3,1fr);
     gap:20px;
     margin-top:20px;
+
+    /* Fixed board height */
+    height:750px;
 }
 
 .board-column{
     background:#f8fafc;
     border-radius:12px;
     padding:15px;
-    min-height:600px;
     border:1px solid #dbe4f0;
+
+    /* Equal column sizes */
+    display:flex;
+    flex-direction:column;
+    overflow:hidden;
 }
 
 .column-header{
@@ -186,6 +193,7 @@ li button{
     text-align:center;
     font-weight:700;
     margin-bottom:15px;
+    flex-shrink:0;
 }
 
 .pending-header{
@@ -200,16 +208,59 @@ li button{
     background:#27ae60;
 }
 
+/* Scroll area inside each column */
+.column-content{
+    flex:1;
+    overflow-y:auto;
+    padding-right:5px;
+}
+
+/* Complaint Cards */
 .board-column .complaint-card{
     margin-bottom:15px;
     background:white;
     box-shadow:0 2px 8px rgba(0,0,0,.08);
+    border-radius:10px;
+    padding:15px;
+}
+
+/* Justified text */
+.complaint-card p,
+.complaint-card span,
+.complaint-card div{
+    text-align:justify;
+    line-height:1.5;
+    word-break:break-word;
+}
+
+/* Nice scrollbar */
+.column-content::-webkit-scrollbar{
+    width:8px;
+}
+
+.column-content::-webkit-scrollbar-track{
+    background:#edf2f7;
+    border-radius:10px;
+}
+
+.column-content::-webkit-scrollbar-thumb{
+    background:#94a3b8;
+    border-radius:10px;
+}
+
+.column-content::-webkit-scrollbar-thumb:hover{
+    background:#64748b;
 }
 
 @media(max-width:1000px){
 
     .complaint-board{
         grid-template-columns:1fr;
+        height:auto;
+    }
+
+    .board-column{
+        height:500px;
     }
 
 }
