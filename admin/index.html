@@ -67,9 +67,39 @@
 
     <section class="complaints-section">
 
-        <h2>Complaints</h2>
+        <h2>Complaint Workflow</h2>
 
-        <div id="complaintsContainer">
+        <div class="complaint-board">
+
+            <div class="board-column">
+
+                <div class="column-header pending-header">
+                      New Complaints
+                </div>
+
+                <div id="pendingContainer"></div>
+
+            </div>
+
+            <div class="board-column">
+
+                <div class="column-header progress-header">
+                    Accepted Complaints
+                </div>
+
+                <div id="progressContainer"></div>
+
+            </div>
+
+            <div class="board-column">
+
+                <div class="column-header completed-header">
+                    Completed Complaints
+                </div>
+
+                <div id="completedContainer"></div>
+
+            </div>
 
         </div>
 
