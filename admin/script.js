@@ -56,19 +56,28 @@ function renderComplaints(){
 
     const search =
     document
-    .getElementById(
-        "searchInput"
-    )
+    .getElementById("searchInput")
     .value
     .toLowerCase();
 
-    const container =
-    document
-    .getElementById(
-        "complaintsContainer"
+    const pendingContainer =
+    document.getElementById(
+        "pendingContainer"
     );
 
-    container.innerHTML = "";
+    const progressContainer =
+    document.getElementById(
+        "progressContainer"
+    );
+
+    const completedContainer =
+    document.getElementById(
+        "completedContainer"
+    );
+
+    pendingContainer.innerHTML = "";
+    progressContainer.innerHTML = "";
+    completedContainer.innerHTML = "";
 
     complaints
     .filter(c=>{
@@ -76,40 +85,35 @@ function renderComplaints(){
         return (
             c.id.toLowerCase().includes(search) ||
             c.category.toLowerCase().includes(search) ||
-            (c.location || "").toLowerCase().includes(search)
+            (c.location || "")
+            .toLowerCase()
+            .includes(search)
         );
 
     })
     .forEach(c=>{
 
-        container.innerHTML += `
+        const card = `
         <div class="complaint-card">
 
             <h3>${c.id}</h3>
 
             <p>
-            <strong>Category:</strong>
-            ${c.category}
+                <strong>Category:</strong>
+                ${c.category}
             </p>
 
             <p>
-            <strong>System:</strong>
-            ${c.system}
+                <strong>System:</strong>
+                ${c.system}
             </p>
 
             <p>
-            <strong>Location:</strong>
-            ${c.location}
+                <strong>Location:</strong>
+                ${c.location}
             </p>
 
-            <p>
-            ${c.complaint}
-            </p>
-
-            <p>
-            <strong>Status:</strong>
-            ${c.status}
-            </p>
+            <p>${c.complaint}</p>
 
             <div class="actions">
 
@@ -135,9 +139,26 @@ function renderComplaints(){
 
         </div>
         `;
-    });
-}
 
+        if(
+            c.status === "Pending"
+        ){
+            pendingContainer.innerHTML += card;
+        }
+        else if(
+            c.status === "In Progress"
+        ){
+            progressContainer.innerHTML += card;
+        }
+        else if(
+            c.status === "Completed"
+        ){
+            completedContainer.innerHTML += card;
+        }
+
+    });
+
+}
 async function updateStatus(
     id,
     status
