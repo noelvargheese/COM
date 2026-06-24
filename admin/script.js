@@ -1,4 +1,3 @@
-```javascript
 const API =
 "https://script.google.com/macros/s/AKfycbzKIO6usAk4Kh-d2zLxJwB5HOgwXHIELTqJ7FMwpZPM-UhPGwkLWKVvS87LgQc33sJtwA/exec";
 
@@ -418,4 +417,3 @@ document
     "input",
     renderComplaints
 );
-```
