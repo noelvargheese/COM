@@ -64,7 +64,44 @@ button{
 button:hover{
     background:#00509e;
 }
+#complaintForm{
+    display:flex;
+    align-items:flex-end;
+    gap:15px;
+    flex-wrap:wrap;
+}
 
+#complaintForm label{
+    display:none;
+}
+
+#complaintForm select,
+#complaintForm input,
+#complaintForm textarea{
+    width:auto;
+    flex:1;
+}
+
+#category,
+#system{
+    min-width:180px;
+}
+
+#location{
+    min-width:220px;
+}
+
+#complaint{
+    min-width:350px;
+    height:48px;
+    resize:none;
+}
+
+#complaintForm button{
+    margin-top:0;
+    height:48px;
+    white-space:nowrap;
+}
 .card{
     border-left:5px solid orange;
     background:#fafafa;
