@@ -54,6 +54,20 @@ async function loadComplaints(){
 
 function renderComplaints(){
 
+    
+    const pendingContainer =
+document.getElementById("pendingContainer");
+
+const progressContainer =
+document.getElementById("progressContainer");
+
+const completedContainer =
+document.getElementById("completedContainer");
+
+console.log("Pending:", pendingContainer);
+console.log("Progress:", progressContainer);
+console.log("Completed:", completedContainer);
+    
     const search =
     document
     .getElementById("searchInput")
