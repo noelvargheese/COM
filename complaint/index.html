@@ -23,13 +23,12 @@
 
         <form id="complaintForm">
 
-            <label>Category</label>
             <select id="category" required>
-                <option value="">Category</option>
+                <option value="">Select Category</option>
             </select>
 
             <select id="system" required>
-                <option value="">System</option>
+                <option value="">Select System</option>
             </select>
 
             <input
@@ -45,7 +44,9 @@
                 required
             ></textarea>
 
-            <button type="submit">Submit</button>
+            <button type="submit">
+                Submit
+            </button>
 
         </form>
 
@@ -58,6 +59,8 @@
         <h2>Pending Complaints</h2>
 
         <div id="pendingComplaints">
+
+            <!-- Dynamic complaint cards -->
 
         </div>
 
